@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PhoneIntel</title>
+  <style>
+    body {
+      background: #000;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      animation: starFall 3s linear infinite, starTwinkle 2s alternate infinite;
+    }
+
+    @keyframes starFall {
+      0% {
+        transform: translate(0, -10px);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(0, 100vh);
+        opacity: 1;
+      }
+    }
+
+    @keyframes starTwinkle {
+      0% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .sci-fi-button {
+      background: linear-gradient(to bottom, #ff0000, #ff4444);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.7);
+    }
+
+    .sci-fi-button:hover {
+      background: linear-gradient(to bottom, #ff4444, #ff0000);
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <h1 style="color: #fff;">Phone Intel</h1>
+    <form method="post">
+      <input type="input" name="question" class="sci-fi-button" placeholder="+1234567890"></input>
+      <button type="submit" class="sci-fi-button">Fetch</button>
+    </form>
+    <p style="color: #fff;">{{ response}}</p>
+  </div>
+  <script>
+    const numStars = 50;
+
+    for (let i = 0; i < numStars; i++) {
+      createStar();
+    }
+
+    function createStar() {
+      const star = document.createElement('div');
+      star.className = 'star';
+      document.body.appendChild(star);
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+    }
+  </script>
+</body>
+</html>
